@@ -1,0 +1,12 @@
+/root/dockers/nginx/logs/*.log {
+        daily
+        missingok
+        rotate 52
+        compress
+        delaycompress
+        notifempty
+        sharedscripts
+        postrotate
+                cd /root/dockers/nginx && /usr/bin/docker compose kill -s USR1 nginx
+        endscript
+}
